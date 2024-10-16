@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.serverErrorResponse = exports.notFoundResponse = exports.forbiddenResponse = exports.unprocessibleContentResponse = exports.badRequestResponse = exports.unauthorizedResponse = exports.createdResponse = exports.successResponse = void 0;
+const sendResponse = (res, statusCode, success, message, data = null) => {
+    return res.status(statusCode).json({ statusCode, success, message, data });
+};
+const successResponse = (res, message, data) => sendResponse(res, 200, true, message, data);
+exports.successResponse = successResponse;
+const createdResponse = (res, message, data) => sendResponse(res, 201, true, message, data);
+exports.createdResponse = createdResponse;
+const unauthorizedResponse = (res, message) => sendResponse(res, 401, false, message);
+exports.unauthorizedResponse = unauthorizedResponse;
+const badRequestResponse = (res, message) => sendResponse(res, 400, false, message);
+exports.badRequestResponse = badRequestResponse;
+const unprocessibleContentResponse = (res, message) => sendResponse(res, 422, false, message);
+exports.unprocessibleContentResponse = unprocessibleContentResponse;
+const forbiddenResponse = (res, message) => sendResponse(res, 403, false, message);
+exports.forbiddenResponse = forbiddenResponse;
+const notFoundResponse = (res, message) => sendResponse(res, 404, false, message);
+exports.notFoundResponse = notFoundResponse;
+const serverErrorResponse = (res, message) => sendResponse(res, 500, false, message);
+exports.serverErrorResponse = serverErrorResponse;
