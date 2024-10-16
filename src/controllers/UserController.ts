@@ -4,12 +4,9 @@ import { errorHandler } from "../utils/errorHandlers";
 import UserService from "./UserServices";
 import argon from "argon2";
 import {
-  BadRequestError,
   NotFoundError,
   UnauthorizedError,
 } from "../utils/errors";
-import { UserType } from "../types";
-import { User } from "@prisma/client";
 import JwtService from "../services/JwtService";
 
 export default class UserController {
